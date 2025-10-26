@@ -128,148 +128,109 @@ main {
     text-align: center;
 }
 
-.google-map-container {
-    width: 100%;
-    margin-bottom: 0;
-}
-
-.google-map-container iframe {
-    width: 100%;
-    border-radius: 12px;
-}
-
-.map-legend {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.legend-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-}
-
-.legend-color.low {
-    background: #27ae60;
-}
-
-.legend-color.medium {
-    background: #f39c12;
-}
-
-.legend-color.high {
-    background: #e74c3c;
-}
-
-.legend-text {
-    font-size: 14px;
-    color: #666;
-}
-
-.map-visual {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 20px;
-    min-height: 300px;
+.gmap-wrap {
     position: relative;
+    width: 100%;
 }
 
-.road {
+.gmap {
+    width: 100%;
+    height: 340px;
+    border: 0;
+    border-radius: 12px;
+    pointer-events: none;
+}
+
+.hazard-overlay {
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.zone {
+    mix-blend-mode: multiply;
+}
+
+.zone-red {
+    fill: rgba(231, 76, 60, 0.35);
+    stroke: rgba(231, 76, 60, 0.55);
+    stroke-width: 2;
+}
+
+.zone-yellow {
+    fill: rgba(243, 156, 18, 0.30);
+    stroke: rgba(243, 156, 18, 0.50);
+    stroke-width: 2;
+}
+
+.overlay-legend {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 10px;
     border-radius: 8px;
     font-size: 12px;
-    font-weight: 600;
-    color: white;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.road:hover {
-    transform: scale(1.05);
-    z-index: 10;
+.overlay-legend .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 4px;
 }
 
-.road.low {
-    background: #27ae60;
-}
-
-.road.medium {
-    background: #f39c12;
-}
-
-.road.high {
+.overlay-legend .dot.red {
     background: #e74c3c;
 }
 
-.ecopa-marker {
+.overlay-legend .dot.yellow {
+    background: #f39c12;
+}
+
+.overlay-disclaimer {
     position: absolute;
-    background: #667eea;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 700;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.route-item {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-left: 4px solid #27ae60;
-}
-
-.route-item:last-child {
-    margin-bottom: 0;
-}
-
-.route-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.route-name {
-    font-size: 18px;
-    font-weight: 700;
-    color: #333;
-}
-
-.route-time {
-    font-size: 16px;
-    font-weight: 600;
-    color: #27ae60;
-}
-
-.route-description {
-    font-size: 14px;
+    right: 12px;
+    bottom: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 10px;
     color: #666;
-    line-height: 1.6;
-    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.route-status {
-    display: inline-block;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
+.routes-simple {
+    display: grid;
+    gap: 10px;
+}
+
+.route-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fa;
+    border-radius: 999px;
+    padding: 12px 16px;
+    border: 1px solid #eee;
     font-weight: 600;
-    background: #d4edda;
-    color: #155724;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.route-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.route-pill .icon {
+    font-size: 20px;
 }
 
 footer {
@@ -303,16 +264,32 @@ footer {
         font-size: 18px;
     }
     
-    .route-name {
-        font-size: 16px;
+    .gmap {
+        height: 280px;
     }
     
-    .route-time {
+    .overlay-legend {
+        font-size: 10px;
+        gap: 8px;
+        padding: 4px 8px;
+    }
+    
+    .overlay-legend .dot {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .overlay-disclaimer {
+        font-size: 9px;
+    }
+    
+    .route-pill {
+        padding: 10px 14px;
         font-size: 14px;
     }
     
-    .map-visual {
-        min-height: 250px;
+    .route-pill .icon {
+        font-size: 18px;
     }
 }
 
@@ -331,7 +308,7 @@ footer {
         padding: 40px;
     }
     
-    .map-visual {
-        min-height: 350px;
+    .gmap {
+        height: 380px;
     }
 }

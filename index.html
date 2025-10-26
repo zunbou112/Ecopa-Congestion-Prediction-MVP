@@ -28,44 +28,46 @@
             </div>
             
             <div class="map-card">
-                <h2 class="section-title">エコパ周辺地図</h2>
-                <div class="google-map-container">
+                <h2 class="section-title">エコパ周辺地図（混雑予測）</h2>
+                <div class="gmap-wrap">
                     <iframe 
+                        class="gmap"
                         src="https://www.google.com/maps?q=エコパアリーナ&hl=ja&z=16&output=embed"
                         width="100%" 
                         height="340" 
                         style="border:0; border-radius: 12px;" 
-                        allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
-                </div>
-            </div>
-            
-            <div class="map-card">
-                <h2 class="section-title">混雑マップ</h2>
-                <div class="map-container" id="mapContainer">
-                    <div class="map-legend">
-                        <div class="legend-item">
-                            <span class="legend-color low"></span>
-                            <span class="legend-text">空いている</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-color medium"></span>
-                            <span class="legend-text">やや混雑</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-color high"></span>
-                            <span class="legend-text">混雑</span>
-                        </div>
+                    <svg class="hazard-overlay" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">
+                        <ellipse class="zone zone-yellow" cx="520" cy="320" rx="200" ry="140" />
+                        <ellipse class="zone zone-red" cx="600" cy="290" rx="120" ry="90" />
+                        <ellipse class="zone zone-yellow" cx="320" cy="380" rx="140" ry="90" />
+                    </svg>
+                    <div class="overlay-legend">
+                        <span><span class="dot red"></span>渋滞予想</span>
+                        <span><span class="dot yellow"></span>やや混雑</span>
                     </div>
-                    <div class="map-visual" id="mapVisual"></div>
+                    <div class="overlay-disclaimer">混雑エリアは予測（仮）です</div>
                 </div>
             </div>
             
             <div class="routes-card">
                 <h2 class="section-title">おすすめ代替ルート</h2>
-                <div class="routes-container" id="routesContainer"></div>
+                <div class="routes-simple">
+                    <div class="route-pill">
+                        <span class="icon">🚶</span>
+                        <span>愛野駅から徒歩（約20-25分）</span>
+                    </div>
+                    <div class="route-pill">
+                        <span class="icon">🚗</span>
+                        <span>袋井IC→一般道（約30分）</span>
+                    </div>
+                    <div class="route-pill">
+                        <span class="icon">🚌</span>
+                        <span>掛川駅からバス利用</span>
+                    </div>
+                </div>
             </div>
         </main>
         
