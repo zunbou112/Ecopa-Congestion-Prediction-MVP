@@ -49,7 +49,7 @@ function displayPrediction() {
     
     dateDisplay.textContent = formatDate();
     delayTime.textContent = `+${mockPrediction.delay_minutes}分`;
-    reasonText.textContent = `本日のイベント: ${mockPrediction.event_name} のため`;
+    reasonText.textContent = `本日のイベント: ${mockPrediction.event_name}`;
 }
 
 function displayMap() {
