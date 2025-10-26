@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', Meiryo, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header {
+    text-align: center;
+    color: white;
+    padding: 10px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+main {
+    flex: 1;
+}
+
+.prediction-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.date-display {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    font-weight: 500;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.delay-section {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.delay-label {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.delay-time {
+    font-size: 64px;
+    font-weight: 700;
+    color: #e74c3c;
+    text-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.reason-section {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.reason-label {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.reason-text {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 20px;
+    }
+    
+    .prediction-card {
+        padding: 25px 20px;
+    }
+    
+    .delay-time {
+        font-size: 52px;
+    }
+    
+    .reason-text {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 600px;
+    }
+    
+    header h1 {
+        font-size: 28px;
+    }
+    
+    .prediction-card {
+        padding: 40px;
+    }
+}
